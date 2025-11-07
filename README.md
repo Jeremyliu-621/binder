@@ -6,16 +6,16 @@
 
 ## Overview
 
-**Binder** transforms traditional marketplace browsing into an intuitive, swipe-based interface. Browse Toronto-area Kijiji listings with simple gestures, save your favorites, and discover deals in a fun, engaging way.
+Binder transforms traditional marketplace browsing into an intuitive, swipe-based interface. Browse Toronto-area Kijiji listings with simple gestures, save your favorites, and discover deals in a fun, engaging way.
 
 ---
 
 ## Key Features
 
 ### Swipe Interface
-- **Swipe Right** to save items to your watchlist
-- **Swipe Left** to pass on items
-- **Swipe Up/Down** to reveal or hide full descriptions
+- **Swipe Right to save items to your watchlist
+- **Swipe Left to pass on items
+- **Swipe Up/Down to reveal or hide full descriptions
 - Visual feedback and smooth animations
 
 ### Smart Search
@@ -150,13 +150,13 @@ binder/
 
 ## Use Cases
 
-**Apartment Hunting**
+Apartment Hunting
 Search for apartments, swipe through options, save favorites for comparison.
 
-**Finding Deals**
+Finding Deals
 Browse electronics, furniture, or vehicles with real-time market data.
 
-**Casual Discovery**
+Casual Discovery
 Browse the randomized main feed to discover unexpected finds.
 
 
