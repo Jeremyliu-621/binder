@@ -1,165 +1,124 @@
+
 # binder.
+Swipe your way to the perfect marketplace deal  
+AI-powered negotiation assistant for smart shopping 
 
-> **Swipe. Save. Shop.** - A Tinder-style marketplace app that makes browsing Kijiji listings fun and effortless.
+---
+Overview
+--------
+
+Ever wish you could browse marketplace listings like Tinder, with AI that helps you negotiate better deals?  
+Traditional marketplace apps are cluttered and negotiation can be awkward.  
+That's why we built binder.: a Tinder-style marketplace browser with AI-powered negotiation coaching.
+
+binder. combines web scraping, AI reasoning, and an intuitive swipe interface to help you discover great deals and negotiate like a pro. Swipe through Kijiji listings, save items to your watchlist, and get AI-powered message suggestions to help you close the deal.
 
 ---
 
-## Overview
+Features
+--------
 
-Binder transforms traditional marketplace browsing into an intuitive, swipe-based interface. Browse Toronto-area Kijiji listings with simple gestures, save your favorites, and discover deals in a fun, engaging way.
+Core Capabilities  
+- Swipe Interface: Browse marketplace listings with an intuitive Tinder-style swipe interface.  
+- AI Recommendations: Get intelligent left/right swipe suggestions based on your preferences.  
+- Price Estimation: AI-powered price analysis for better deal evaluation.  
+- Message Coach: Real-time negotiation assistance with personalized message suggestions.  
+- Watchlist: Save interesting items for later review.  
+- Real-time Scraping: Live updates from Kijiji as you browse.  
 
----
-
-## Key Features
-
-### Swipe Interface
-- **Swipe Right to save items to your watchlist
-- **Swipe Left to pass on items
-- **Swipe Up/Down to reveal or hide full descriptions
-- Visual feedback and smooth animations
-
-### Smart Search
-- Search for any item (e.g., "laptop", "bike", "furniture")
-- Instant display of existing results
-- Automatic background scraping for fresh listings
-- Real-time updates as new items are found
-
-### Watchlist
-- Save items you're interested in with a single swipe
-- View detailed information and multiple photos
-- Easy management and removal of saved items
-- Persistent across sessions
-
-### Dynamic Feed
-- Randomized listing display on the main page
-- Auto-refreshes with new items
-- Filters out duplicates and already-saved items
-- Quality-checked listings only
+Technical Features  
+- Smart Filtering: Filter by price, quality, location, and more.  
+- Multi-style Messaging: Choose from polite, balanced, or direct communication styles.  
+- Deal Analysis: Get risk assessments and negotiation tactics.  
+- Background Processing: Non-blocking scraping with real-time CSV updates.  
+- Responsive Design: Works seamlessly on mobile and desktop.
 
 ---
 
-## Installation
+Architecture
+------------
 
-### Prerequisites
-- Node.js (v18+)
-- Python (3.10+)
-- Chrome Browser
+binder. connects multiple systems into a unified marketplace experience:
 
-### Setup
+User Search → Kijiji Scraper → CSV Storage → AI Analysis → Swipe Interface → Message Coach → Watchlist  
 
-1. **Install frontend dependencies**
-```bash
-npm install
-```
-
-2. **Install Python dependencies**
-```bash
-cd kijiji-scraper
-python setup.py
-```
-
-3. **Start the app**
-```bash
-npm run dev
-```
-
-4. Open `http://localhost:5173` in your browser
+(Add a system diagram here, e.g., docs/images/system-diagram.png)
 
 ---
 
-## Usage
+Tech Stack
+-----------
 
-### Searching
-1. Type a search term in the search box
-2. Press Enter
-3. Browse results as they load in real-time
-
-### Browsing
-- Leave the search box empty to browse all listings
-- Swipe right on items you like
-- Swipe left to skip
-
-### Managing Watchlist
-- Click the "Watchlist" tab to view saved items
-- Click any item for full details
-- Remove items you're no longer interested in
-
-### Stopping a Scrape
-- Click the 'X' button next to the search box
-- Start a new search (automatically stops the current one)
-- Switch to the Watchlist tab
+| Category | Technologies |
+|-----------|---------------|
+| Frontend | React 19, TypeScript, Vite 6, Tailwind CSS |
+| AI & ML | Google Gemini API, AI-powered recommendations |
+| Backend | Python 3.14, Selenium 4.15, BeautifulSoup 4 |
+| Data Storage | CSV files (lightweight, no database required) |
+| Build Tools | Vite with custom CSV API plugin |
+| State Management | React Hooks (useState, useEffect, useCallback) |
 
 ---
 
-## Configuration
+How It Works
+------------
 
-Adjust scraper settings in `kijiji-scraper/config.py`:
-
-```python
-SCRAPER_CONFIG = {
-    'headless': False,       # Show/hide browser window
-    'max_pages': 2,          # Pages to scrape per search
-    'max_listings': 10,      # Items per search
-}
-```
-
-Common adjustments:
-- Set `headless: True` for background scraping
-- Increase `max_listings` for more results
-- Adjust timeout values for faster/slower scraping
+1. Search & Scrape – User enters search query, system instantly loads existing results and triggers background scraper.  
+2. AI Analysis – Google Gemini analyzes listings and provides swipe recommendations based on preferences.  
+3. Swipe Interface – Users swipe left (pass) or right (save) through listings with smooth animations.  
+4. Message Coaching – AI generates personalized message suggestions for negotiating with sellers.  
+5. Price Negotiation – Get counter-offer suggestions, safety tips, and negotiation tactics.
 
 ---
 
-## Project Structure
+Data Sources
+------------
 
-```
-binder/
-├── components/          # React UI components
-├── services/            # Business logic
-├── kijiji-scraper/      # Python scraper
-│   ├── kijiji_scraper.py
-│   └── config.py
-├── public/              # Static files and CSV data
-├── App.tsx              # Main application
-└── vite-plugin-csv-api.js  # Backend API integration
-```
+- Kijiji marketplace listings via web scraping  
+- Google Gemini API for AI-powered analysis and recommendations  
+- CSV file storage for lightweight data persistence  
+  - `{searchTerm}.csv` – Search-specific results  
+  - `listings.csv` – Master feed (shuffled every 2 seconds)  
+  - `fyp.csv` – Historical archive
 
 ---
 
-## Features in Detail
+Challenges Overcome
+-------------------
 
-### Intelligent Scraping
-- Scrapes real Kijiji listings on demand
-- Runs in the background without blocking the UI
-- Automatically filters out errors and duplicates
-- Validates data quality before saving
-
-### Data Quality
-- Skips incomplete or error listings
-- Removes duplicate entries
-- Validates all required fields
-- Formats prices for readability
-
-### User Experience
-- Mobile-responsive design
-- Touch-optimized gestures
-- Smooth card animations
-- No page reloads needed
+- Integrated Selenium scraping with real-time CSV updates.  
+- Built custom Vite plugin for seamless Python backend integration.  
+- Implemented swipe gestures with smooth animations.  
+- Created unified AI service combining recommendation and chat assistance.  
+- Optimized polling mechanism for efficient real-time updates.
 
 ---
 
-## Use Cases
+Future Roadmap
+--------------
 
-Apartment Hunting
-Search for apartments, swipe through options, save favorites for comparison.
-
-Finding Deals
-Browse electronics, furniture, or vehicles with real-time market data.
-
-Casual Discovery
-Browse the randomized main feed to discover unexpected finds.
-
+- Multi-marketplace Support: Extend to Facebook Marketplace, Craigslist, and more.  
+- User Accounts: Save preferences, search history, and negotiation templates.  
+- Push Notifications: Alert when new items match your criteria.  
+- Advanced AI: Better price prediction using historical data.  
+- Database Migration: Replace CSV with SQLite/PostgreSQL for better performance.  
+- WebSocket Integration: Real-time updates without polling.  
+- Mobile App: Native iOS and Android applications.
 
 ---
 
-*Happy browsing!*
+Team
+----
+
+| Member |
+|---------|
+| Arham Aamir |
+| Ryan Gao |
+| Jeremy Liu |
+| Ethan Yang |
+
+---
+
+Links
+-----
+- Devpost Submission: https://devpost.com/software/binder-us65t7
